@@ -53,10 +53,11 @@
                 <div id="before1"></div>
                 <i class="ri-user-line"> Profile</i>
               </h3>
-              <h3 id="op2">
-                <div id="before2"></div>
-                <i class="ri-information-line"> Classroom</i>
-              </h3>
+              <a style="text-decoration: none;" href="/classroom">
+                <h4 id="op3">
+                  <i class="ri-information-line"> Classroom</i>
+                </h4>
+              </a><x></x>
               <a style="text-decoration: none;" href="/logout">
                 <h4 id="op3">
                   <i class="ri-logout-box-line"> Logout</i>
@@ -98,33 +99,6 @@
                     </div>
                   </form>
                 </div>
-              </div>
-            </div>
-            <div id="rightpage2">
-              <div style="display: flex; gap: 30px;" id="frame2">
-                <% loginuser.buycources.forEach(function(courses){ %>
-                  <div class="card" style="width: 24rem;">
-                    <div id="courseimg">
-                      <img src="/getCourses/<%=courses.thumnail %>" alt="">
-                    </div>
-                    <div class="card-body">
-                      <h5 style="font-size: 2.5vh; font-weight: 500; font-family: gilroy;" class="card-title">
-                        <%= courses.coursestittle%>
-                      </h5>
-                      <h5 
-                        style="font-size: 2.5vh; font-weight: 500; font-family: gilroy; border: 1px solid #40BFFF; border-radius: 5px; padding: 1vh 2vh;background-color: #40bfff57; width: fit-content;"
-                        class="card-title">Starting on
-                        <span id="date" style="font-family: gilroy; color: blue;">
-                          <%= courses.date%>
-                        </span>
-                      </h5>
-                      <a style=" cursor:not-allowed; padding: 5px 40px; font-family: gilroy; background-color:#72cc50; color: #fff;"
-                        class="btn btn">Paid</a>
-                      <a href="#" style="padding: 5px 40px; font-family: gilroy; background-color:#FA3F3F; color: #fff;"
-                        class="btn btn">Watch Recording</a>
-                    </div>
-                  </div>
-                  <% }) %>
               </div>
             </div>
           </div>
@@ -178,3 +152,33 @@
   </script>
 </body>
 </html>
+
+<!-- 
+  <div id="rightpage2">
+              <div style="display: flex; gap: 30px;" id="frame2">
+                <% loginuser.buycources.forEach(function(courses){ %>
+                  <div class="card" style="width: 24rem;">
+                    <div id="courseimg">
+                      <img src="/getCourses/<%=courses.thumnail %>" alt="">
+                    </div>
+                    <div class="card-body">
+                      <h5 style="font-size: 2.5vh; font-weight: 500; font-family: gilroy;" class="card-title">
+                        <%= courses.coursestittle%>
+                      </h5>
+                      <h5 
+                        style="font-size: 2.5vh; font-weight: 500; font-family: gilroy; border: 1px solid #40BFFF; border-radius: 5px; padding: 1vh 2vh;background-color: #40bfff57; width: fit-content;"
+                        class="card-title">Starting on
+                        <span id="date" style="font-family: gilroy; color: blue;">
+                          <%= courses.date%>
+                        </span>
+                      </h5>
+                      <a style=" cursor:not-allowed; padding: 5px 40px; font-family: gilroy; background-color:#72cc50; color: #fff;"
+                        class="btn btn">Paid</a>
+                      <a href="#" style="padding: 5px 40px; font-family: gilroy; background-color:#FA3F3F; color: #fff;"
+                        class="btn btn">Watch Recording</a>
+                    </div>
+                  </div>
+                  <% }) %>
+              </div>
+            </div>
+ -->

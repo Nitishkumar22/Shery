@@ -26,72 +26,95 @@
             <div id="allcources">
                 <% allcourses.forEach(function(courses){ %>
                     <div class="courses">
-                        <a href="/coursesDetailes/<%=courses.coursestittle%>">
-                            <div class="thumnail">
-                                <img src="/getCourses/<%=courses.thumnail %>" alt="">
+                        <div class="coursesimg">
+                            <img src="/getCourses/<%=courses.thumnail %>" alt="">
+                        </div>
+                        <div class="coursedets">
+                            <div class="startingdate">
+                                <h5>Started on <span id="date" style="font-family: gilroy;">
+                                        <%=courses.date %>
+                                    </span></h5>
                             </div>
-                        </a>
-                        <div class="staringdate">
-                            <h5>Started on <span id="date" style="font-family: gilroy;">
-                                    <%=courses.date %>
-                                </span></h5>
-                        </div>
-                        <a style="text-decoration: none; color: #fff;"
-                            href="/coursesDetailes/<%=courses.coursestittle%>">
-                            <div class="coursestopic">
-                                <h4 style="font-family: gilroy; font-weight: 600;">
-                                    <%= courses.coursestittle %>
-                                </h4>
-                            </div>
-                        </a>
-                        <div style="display: flex; align-items: center; gap: 20px;" class="ratting">
-                            <i class="ri-star-line">
-                                <%=courses.rating %>/5
-                            </i>
-                        </div>
-                        <div class="coursesdets">
-                            <small style="font-family: gilroy; font-weight: 400;">
-                                <%= courses.coursesdes %>
-                            </small>
-                        </div>
-                        <div style="display: flex; align-items: center; justify-content: space-between;" class="amount">
-                            <h5>₹<%=courses.actualprice%>
-                            </h5>
-                            <a href="/coursesDetailes/<%=courses.coursestittle%>"><button>Explore</button>
+                            <a "
+                                href=" /coursesDetailes/<%=courses.coursestittle%>">
+                                <div class="coursestopic">
+                                    <h4 style="font-family: gilroy; font-weight: 600;">
+                                        <%= courses.coursestittle %>
+                                    </h4>
+                                </div>
                             </a>
-                        </div>
-
-                        <div class="btn">
-                            <% if(loginuser.admin===true){ %>
-                                <a href="/editcourse/<%= courses._id %>">
-                                    <h5><button
-                                            style="border: none; margin-right: 10vh;padding: 3px 4vh; border: 1px solid #fff; background-color: transparent; color: #fff; font-family: gilroy; font-size: 17px; border-radius: 5px;">Edit</button>
-                                    </h5>
+                            <div class="ratting">
+                                <i class="ri-star-line">
+                                    <%=courses.rating %>/5
+                                </i>
+                            </div>
+                            <div class="coursesdets">
+                                <small style="font-family: gilroy; font-weight: 400;">
+                                    <%= courses.coursesdes %>
+                                </small>
+                            </div>
+                            <div class="priceExplore">
+                                <h4>₹<%=courses.actualprice%>
+                                </h4>
+                                <a href="/coursesDetailes/<%=courses.coursestittle%>"><button>Explore</button>
                                 </a>
-                                <% } else { %>
-
-                                    <% } %>
-                                    <% if(loginuser.admin===true){ %>
-                                        <a href="/deletecourse/<%= courses._id %>">
-                                            <h5><button
-                                                    style="  border: none; margin-right: 10vh;padding: 3px 4vh; border: 1px solid #fff; background-color: transparent; color: #fff; font-family: gilroy; font-size: 17px; border-radius: 5px;">Delete</button>
-                                            </h5>
-                                        </a>
-                                        <% } else { %>
-        
-                                            <% } %>
+                            </div>
+                            <div class="btn">
+                                <% if(loginuser.admin===true){ %>
+                                    <a href="/editcourse/<%= courses._id %>">
+                                        <h5><button
+                                               >Edit</button>
+                                        </h5>
+                                    </a>
+                                    <% } else { %>
+    
+                                        <% } %>
+                                        <% if(loginuser.admin===true){ %>
+                                            <a href="/deletecourse/<%= courses._id %>">
+                                                <h5><button
+                                                      >Delete</button>
+                                                </h5>
+                                            </a>
+                                            <% } else { %>
+            
+                                                <% } %>
+                            </div>
                         </div>
                     </div>
                     <% }) %>
             </div>
             <div id="footer">
-                <div id="dooterdets">
-                    <h4>Talent is cheaper than table salt. What separates the talented individual from the successful
-                        one is a lot of hard work.</h4>
-                    <h5>Contact us - 8709141863</h5>
-                </div>
-                <div id="navigationtotop">
-                    <h6 id="gotop">Move to top</h6>
+                <div id="footertop">
+                    <div id="footertopleft">
+                        <div class="brandname">
+                           <div class="logo"></div>
+                           <h4>BrainBoost</h4>
+                        </div>
+                        <div id="email">
+                            <input type="text" placeholder=" Your Email">
+                            <h3>Start Your Learning Journey</h3>
+                        </div>
+                    </div>
+                </div> 
+                <div id="footerbottom">
+                    <div class="footerb1">
+                        <h2>BrainBoost</h2>
+                        <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, odit?</h5>
+                    </div>
+                    <div class="footerb2">
+                        <a href="">About</a>
+                        <a href="">Job</a>
+                        <a href="">Docs</a>
+                    </div>
+                    <div class="footerb3">
+                        <a href="">Term and Conditions</a>
+                        <a href="">Privacy Policy</a>
+                        <a href="">Cookie Policy</a>
+                    </div>
+                    <div class="footerb4">
+                        <h5>Let's Chat!</h5>
+                        <small>nitishjsr7209@gmail.com</small>
+                    </div>
                 </div>
             </div>
     </div>

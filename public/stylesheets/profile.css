@@ -31,6 +31,7 @@ body {
 #profile {
     /* width: 85vw; */
     height: 85vh;
+    margin-top: 5vh;
     /* background-color: red; */
     overflow: hidden;
     border-radius: 20px;
@@ -210,10 +211,7 @@ body {
     outline: none;
 }
 
-#rightpage1 {
-    display: none;
-    opacity: 0;
-}
+
 
 #frame1 {
     padding: 10vh;

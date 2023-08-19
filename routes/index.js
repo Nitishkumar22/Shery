@@ -120,18 +120,6 @@ router.post('/coursesupload', coursesUpload.single("coursesupload"), async funct
 });
 
 
-/* GET home page. */
-router.get('/', function (req, res) {
-  if (req.isAuthenticated()) {
-    userModel.findOne({ email: req.user.email })
-      .then(function (loginuser) {
-        res.render('index', { loginuser });
-      })
-  } else {
-    res.render('login');
-  }
-});
-
 // login page 
 router.get('/signIn', isLoggedOut, function (req, res) {
   res.render('login');
@@ -146,6 +134,16 @@ router.get('/loginuser', isLoggedOut, function (req, res) {
 //signUp page
 router.get('/signup/newuser', isLoggedOut, function (req, res) {
   res.render('signup');
+});
+
+router.get('/', async function (req, res) {
+  if (req.isAuthenticated()) {
+   let loginuser = await userModel.findOne({ email: req.user.email })
+    let cources = await coursesModel.find().limit(8).skip(0)   
+  res.render('Home', { loginuser, cources });
+  } else {
+    res.render('login');
+  }
 });
 
 //cources page
@@ -322,7 +320,7 @@ router.post('/add/course/:course_id', isLoggedIn, async function (req, res) {
 
 // classrome page
 router.get('/classroom', isLoggedIn, async function (req, res) {
-    let loginuser = await userModel.findOne({email: req.user.email})
+    let loginuser = await userModel.findOne({email: req.user.email}).populate("buycources")
     res.render("classroom",{loginuser})
 });
 
@@ -375,7 +373,7 @@ router.post('/login', passport.authenticate('local', {
 router.get('/logout', isLoggedIn, function (req, res) {
   req.logout(function (err) {
     if (err) { return next(err); }
-    res.redirect('/loginuser');
+    res.redirect('/signIn');
   });
 });
 
@@ -471,3 +469,28 @@ function isLoggedIn(req, res, next) {
 
 
 module.exports = router;
+
+
+
+// router.get("/home", isLoggedIn, async function (req, res) {
+//   try {
+//     const users = await userModel.find({});
+//     const randomSubset = getRandomSubset(users, 2); // Change 5 to the desired number of users to display
+//     let user = await userModel
+//       .findOne({ username: req.user.username })
+//       .populate("following")
+//       .populate("stories");
+//     let alluser = await userModel.find().populate("stories");
+//     let storyUsers = await userModel.find().populate("stories");
+//     let posts = await postModel.find().limit(8).skip(0).populate("owner");
+//     res.render("home", {
+//       posts: posts,
+//       user: user,
+//       storyUsers: storyUsers,
+//       alluser: randomSubset,
+//     });
+//     // res.render('home', { users: randomSubset });
+//   } catch (error) {
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
